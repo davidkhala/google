@@ -12,9 +12,9 @@ describe('try one', function () {
         const data = await client.search("HSBC Subang Jaya")
         assert.equal(data.length, 1)
         console.debug(data)
-    //       location: { latitude: 3.0484288999999998, longitude: 101.58590410000001 },
+        //       location: { latitude: 3.0484288999999998, longitude: 101.58590410000001 },
     })
-    it('Bandar Baru Klang', async ()=>{
+    it('Bandar Baru Klang', async () => {
         let data = await client.search("HSBC Bandar Baru Klang")
         console.debug(data)
         data = await client.search('HSBC Taman Molek')
@@ -23,7 +23,7 @@ describe('try one', function () {
 })
 
 function load_csv(name) {
-    const {data} = FromFile(`tests/fixture/${name}.csv`)
+    const {data} = FromFile(`tests/fixture/${name}.csv`, undefined, "|")
     return [data.map(d => d['Work Location Name'] + ', HSBC'), data]
 }
 
@@ -36,14 +36,13 @@ describe('batch', function () {
             const item = searchTexts[i]
             const list = await client.search(item)
             const locations = list.map(i => i.location)
-
             if (locations.length > 1) {
                 console.debug(item, locations)
-            } else if(locations.length === 1) {
+            } else if (locations.length === 1) {
                 const {latitude, longitude} = locations[0]
                 raw[i]['latitude'] = latitude
                 raw[i]['longitude'] = longitude
-            }else {
+            } else {
                 console.warn(item, locations)
             }
 
@@ -56,10 +55,13 @@ describe('batch', function () {
     it('malaysia', async () => {
         await task('malaysia')
     })
-    it('Bangladesh', async ()=>{
+    it('Bangladesh', async () => {
         await task('bangladesh')
     })
-    it('vietnam', async ()=>{
+    it('vietnam', async () => {
         await task('vietnam')
+    })
+    it('Indonesia', async () => {
+        await task('indon')
     })
 })
