@@ -64,4 +64,10 @@ describe('batch', function () {
     it('Indonesia', async () => {
         await task('indon')
     })
+    it('Sri Lanka', async () => {
+        await task('sri-lanka')
+    })
+    it('Philippines', async () => {
+        await task('philip')
+    })
 })
