@@ -16,7 +16,8 @@
   },
   "devDependencies": {
     "@davidkhala/gcp-format": "latest",
-    "mocha": "latest"
+    "mocha": "latest",
+    "@davidkhala/csv": "latest"
   },
   "type": "module"
 }

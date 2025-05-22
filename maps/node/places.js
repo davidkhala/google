@@ -20,8 +20,8 @@ export class Client {
                 },
             },
         });
-
-
-        return response.places
+        return response.places.map(({formattedAddress, location, displayName})=>({
+            formattedAddress,location, displayName
+        }))
     }
 }
