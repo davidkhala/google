@@ -1,0 +1,22 @@
+{
+  "name": "@davidkhala/googlemaps",
+  "version": "0.0.0",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "google"
+  ],
+  "author": "David Liu",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@googlemaps/routing": "latest",
+    "@googlemaps/places": "latest"
+  },
+  "devDependencies": {
+    "@davidkhala/gcp-format": "latest",
+    "mocha": "latest"
+  },
+  "type": "module"
+}
