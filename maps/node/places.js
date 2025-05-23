@@ -10,18 +10,24 @@ export class Client {
         })
     }
 
-    async search(textQuery) {
+    async search(textQuery, all) {
         const [response] = await this.client.searchText({
             textQuery
         }, {
             otherArgs: {
                 headers: {
-                    'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.location',
+                    'X-Goog-FieldMask': all ? '*' : 'places.displayName,places.formattedAddress,places.location,places.id',
                 },
             },
         });
-        return response.places.map(({formattedAddress, location, displayName})=>({
-            formattedAddress,location, displayName
-        }))
+        const {places} = response
+        if (all) {
+            return places
+        } else {
+            return response.places.map(({formattedAddress, location, displayName, id}) => ({
+                formattedAddress, location, displayName, id
+            }))
+        }
+
     }
 }

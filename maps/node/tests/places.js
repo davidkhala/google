@@ -20,6 +20,12 @@ describe('try one', function () {
         data = await client.search('HSBC Taman Molek')
         console.debug(data)
     })
+    it('Selangor, Jln Ss', async ()=>{
+        const data = await client.search('Lot 55, 57 & 59, Jalan SS21/37, Damansara Utama, Damansara Utama, Selangor Darul Ehsan, 47400, Petaling Jaya')
+        assert.equal(data.length, 1)
+        console.debug(data)
+
+    })
 })
 
 function load_csv(name) {
@@ -47,7 +53,7 @@ describe('batch', function () {
             }
 
         }
-        fs.writeFileSync(`${name}2.csv`, ToFile(raw))
+        fs.writeFileSync(`tests/out/${name}2.csv`, ToFile(raw))
     }
     it('AUS', async () => {
         await task('aus')
