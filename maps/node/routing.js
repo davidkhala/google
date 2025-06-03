@@ -1,5 +1,6 @@
-import {v2} from '@googlemaps/routing'
+import {v2, protos} from '@googlemaps/routing'
 
+const {google: {maps: {routing: {v2: {RouteTravelMode}}}}} = protos
 const {RoutesClient} = v2
 
 
@@ -30,13 +31,15 @@ export class Client {
      *
      * @param {string|Place} from
      * @param {string|Place} to
+     * @param {google.maps.routing.v2.RouteTravelMode} [travelMode]
      * @param {boolean} [all]
      */
-    async route(from, to, all) {
+    async route(from, to, travelMode = RouteTravelMode.TRANSIT, all) {
 
         const [response] = await this.client.computeRoutes({
                 origin: placeConvert(from),
-                destination: placeConvert(to)
+                destination: placeConvert(to),
+                travelMode // SDK Defaults to DRIVE.
             },
             {
                 otherArgs: {
@@ -50,7 +53,7 @@ export class Client {
             return routes
         } else {
             return routes.map(({distanceMeters, duration, legs}) => ({
-                distanceMeters, durationSeconds:duration.seconds, legs
+                distanceMeters, durationHours: (duration.seconds / 3600).toFixed(1), legs
             }))
         }
     }
