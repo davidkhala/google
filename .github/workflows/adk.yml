@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      - run: pip install google-adk
-      - run: adk web
-        working-directory: agent/adk
+      - uses: davidkhala/uv-buildpack@main
+        with:
+          working-directory: agent/adk
+      # - run: adk web
+      #  working-directory: agent/adk
+
+
