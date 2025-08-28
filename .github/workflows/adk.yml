@@ -1,0 +1,12 @@
+name: google-adk
+on:
+  push:
+
+jobs:
+  quickstart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - run: pip install google-adk
+      - run: adk web
+        working-directory: agent/adk
