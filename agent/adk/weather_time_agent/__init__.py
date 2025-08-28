@@ -1,3 +1,4 @@
+# https://google.github.io/adk-docs/get-started/quickstart/#__init__py
 
 import datetime
 from zoneinfo import ZoneInfo
@@ -56,11 +57,8 @@ def get_current_time(city: str) -> dict:
 
 
 root_agent = Agent(
-    name="weather_time_agent",
-    model="gemini-2.0-flash",
-    description=(
-        "Agent to answer questions about the time and weather in a city."
-    ),
+    name="weather_time_agent", # mandatory
+    model="gemini-2.5-flash",
     instruction=(
         "You are a helpful agent who can answer user questions about the time and weather in a city."
     ),

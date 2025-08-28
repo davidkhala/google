@@ -5,6 +5,7 @@ on:
 jobs:
   quickstart:
     runs-on: ubuntu-latest
+    timeout-minutes: 1
     steps:
       - uses: actions/checkout@main
       - uses: davidkhala/uv-buildpack@main
