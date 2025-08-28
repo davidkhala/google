@@ -10,7 +10,7 @@ jobs:
       - uses: davidkhala/uv-buildpack@main
         with:
           working-directory: agent/adk
-      # - run: adk web
-      #  working-directory: agent/adk
+      - run: uv run adk web
+        working-directory: agent/adk
 
 
