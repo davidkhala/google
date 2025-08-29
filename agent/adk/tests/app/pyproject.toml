@@ -1,8 +1,6 @@
 [project]
-name = "adk"
+name = "test-app"
 version = "0.0.0"
-description = "Add your description here"
-readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "google-adk",

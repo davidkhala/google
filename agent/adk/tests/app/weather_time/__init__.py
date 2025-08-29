@@ -3,7 +3,7 @@
 import datetime
 from zoneinfo import ZoneInfo
 from google.adk.agents import Agent
-
+from pathlib import Path
 def get_weather(city: str) -> dict:
     """Retrieves the current weather report for a specified city.
 
@@ -57,7 +57,7 @@ def get_current_time(city: str) -> dict:
 
 
 root_agent = Agent(
-    name="weather_time_agent", # mandatory
+    name=Path(__file__).resolve().parent.name, # mandatory
     model="gemini-2.5-flash",
     instruction=(
         "You are a helpful agent who can answer user questions about the time and weather in a city."
