@@ -9,7 +9,7 @@ from google.genai import types
 class AsyncSession:
     def __init__(self, agent: BaseAgent, user_id: str, app_name: Optional[str] = None):
         if app_name is None:
-            app_name = agent.name # assume agent is root_agent
+            app_name = agent.root_agent.name
         self.app_name = app_name  # unique id for entire adk app.
         self.user_id = user_id
         self.agent = agent

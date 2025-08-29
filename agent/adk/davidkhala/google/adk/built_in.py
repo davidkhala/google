@@ -1,6 +1,7 @@
 from google.adk.agents import Agent, BaseAgent
 from google.adk.tools import google_search, agent_tool
 from google.adk.code_executors import BuiltInCodeExecutor
+from google.adk.tools.bigquery import bigquery_toolset
 
 
 class ToolAgent(BaseAgent):
@@ -31,4 +32,13 @@ class CodeExecutionAgent(Agent, ToolAgent):
         )
 
 
-
+class BQAgent(Agent, ToolAgent):
+    def __init__(self, name, model):
+        super().__init__(
+            name=name, model=model,
+            description="Agent to answer questions about BigQuery data and models and execute SQL queries.",
+            instruction="""You are a data science agent with access to several BigQuery tools.
+            Make use of those tools to answer the user's questions.
+            """,
+            tools=[bigquery_toolset],
+        )
