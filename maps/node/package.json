@@ -18,5 +18,8 @@
     "mocha": "latest",
     "@davidkhala/csv": "latest"
   },
-  "type": "module"
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  }
 }
