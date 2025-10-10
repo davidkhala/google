@@ -2,13 +2,12 @@
   "name": "@davidkhala/googlemaps",
   "version": "0.0.0",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha tests"
   },
   "keywords": [
     "google"
   ],
   "author": "David Liu",
-  "license": "ISC",
   "description": "",
   "dependencies": {
     "@googlemaps/routing": "latest",

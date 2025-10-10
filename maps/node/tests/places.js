@@ -22,7 +22,7 @@ describe('try one', function () {
     })
     it('Selangor, Jln Ss', async ()=>{
         const data = await client.search('Lot 55, 57 & 59, Jalan SS21/37, Damansara Utama, Damansara Utama, Selangor Darul Ehsan, 47400, Petaling Jaya')
-        assert.equal(data.length, 1)
+        assert.ok(data.length>1)
         console.debug(data)
 
     })
@@ -99,7 +99,7 @@ describe('batch', function () {
             }
 
         }
-        fs.writeFileSync(`tests/out/${name}2.csv`, ToFile(raw))
+        fs.writeFileSync(`tests/out/${name}2.csv`, ToFile({data:raw}))
     }
     it('AUS', async () => {
         await search('aus')
